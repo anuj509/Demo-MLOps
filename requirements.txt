@@ -1,7 +1,6 @@
 # local package install
 -e .
 
-
 #Third party Package installtion
 dvc
 dvc[gdrive]
@@ -15,5 +14,6 @@ pydantic
 uvicorn
 gunicorn
 python-multipart
-uvloop
+#uvloop
 httptools
+mlflow
