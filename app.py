@@ -10,32 +10,24 @@ import numpy as np
 import os
 import yaml
 
-params_path = "params.yaml"
+# params_path = "params.yaml"
 
 app = FastAPI()
 
-def read_params(config_path):
-    with open (config_path) as yaml_file:
-        config = yaml.safe_load(yaml_file)
-    return config
+# def read_params(config_path):
+#     with open (config_path) as yaml_file:
+#         config = yaml.safe_load(yaml_file)
+#     return config
 
-# def predict(data):
+
+# def load_model():
 #     config = read_params(params_path)
 #     model_dir_path = config ['webapp_model_dir']
 #     #model_dir = config ['model_dir']
 #     model = joblib.load(model_dir_path)
-#     prediction = model.predict(data)
-#     print (prediction)
-#     return prediction
+#     return model
 
-def load_model():
-    config = read_params(params_path)
-    model_dir_path = config ['webapp_model_dir']
-    #model_dir = config ['model_dir']
-    model = joblib.load(model_dir_path)
-    return model
-
-model = load_model()
+# model = load_model()
 
 class InputFeatures(BaseModel):
     fixed_acidity: float 
@@ -60,27 +52,34 @@ def index():
 @app.post('/predict_single')
 async def single_wine_quality(data:InputFeatures):
     data = data.dict()
-    fixed_acidity = data['fixed_acidity']
-    volatile_acidity = data['volatile_acidity'] 
-    citric_acid = data['citric_acid'] 
-    residual_sugar = data['residual_sugar']
-    chlorides = data['chlorides']
-    free_sulfur_dioxide = data['free_sulfur_dioxide']
-    total_sulfur_dioxide = data['total_sulfur_dioxide']
-    density = data['density']
-    pH = data['pH']
-    sulphates = data['sulphates']
-    alcohol = data['alcohol']
+    # fixed_acidity = data['fixed_acidity']
+    # volatile_acidity = data['volatile_acidity'] 
+    # citric_acid = data['citric_acid'] 
+    # residual_sugar = data['residual_sugar']
+    # chlorides = data['chlorides']
+    # free_sulfur_dioxide = data['free_sulfur_dioxide']
+    # total_sulfur_dioxide = data['total_sulfur_dioxide']
+    # density = data['density']
+    # pH = data['pH']
+    # sulphates = data['sulphates']
+    # alcohol = data['alcohol']
 
-    prediction = model.predict([[fixed_acidity,volatile_acidity,citric_acid,
-                residual_sugar,chlorides,free_sulfur_dioxide,total_sulfur_dioxide,density,pH,
-                sulphates,alcohol]])
+    # data = np.array([list(data.values())])
 
-    print(prediction[0])
+    # # prediction = model.predict([[fixed_acidity,volatile_acidity,citric_acid,
+    # #             residual_sugar,chlorides,free_sulfur_dioxide,total_sulfur_dioxide,density,pH,
+    # #             sulphates,alcohol]])
 
-    return {
-        'prediction': prediction[0]
-    }
+    # prediction = model.predict(data)
+
+    # print(prediction[0])
+
+    # return {
+    #     'prediction': prediction[0]
+    # }
+
+    response = prediction.api_response(data)
+    return response
 
 
 if __name__ == "__main__":
