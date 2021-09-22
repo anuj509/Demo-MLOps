@@ -23,31 +23,31 @@ stages:
       md5: d98e8f2eca228c11c4de1cc96866a54d
       size: 93598
     - path: src/split_data.py
-      md5: e307740d10ed9bbfa1ed3c7c5cb24539
-      size: 2226
+      md5: e5fde2ae77bea6b7ebba59fd30c10ced
+      size: 2227
     outs:
     - path: data/processed/test_winequality.csv
-      md5: 6f7c5d87f31a7241324c926968349036
-      size: 18855
+      md5: 5371e811bd4563950356820e6360b4ab
+      size: 23554
     - path: data/processed/train_winequality.csv
-      md5: bdcf3dd136facc6dba00de7903396e95
-      size: 74889
+      md5: add70d33a0f895de4adc28f5538e6111
+      size: 70190
   train_and_evaluate:
     cmd: python src/train_and_evaluate.py --config=params.yaml
     deps:
     - path: data/processed/test_winequality.csv
-      md5: 6f7c5d87f31a7241324c926968349036
-      size: 18855
+      md5: 5371e811bd4563950356820e6360b4ab
+      size: 23554
     - path: data/processed/train_winequality.csv
-      md5: bdcf3dd136facc6dba00de7903396e95
-      size: 74889
+      md5: add70d33a0f895de4adc28f5538e6111
+      size: 70190
     - path: src/train_and_evaluate.py
-      md5: a349c0eff4c2909755c8c615642e6739
-      size: 4078
+      md5: d1a08f77a4c1c070b978050edc4fb6dc
+      size: 4572
     params:
       params.yaml:
-        estimators.ElasticNet.params.alpha: 0.88
-        estimators.ElasticNet.params.l1_ratio: 0.89
+        estimators.RandomForestRegressor.params.max_depth: None
+        estimators.RandomForestRegressor.params.n_estimators: 150
   log_production_model:
     cmd: python src/log_production_model.py --config=params.yaml
     deps:

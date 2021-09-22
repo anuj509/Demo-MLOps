@@ -24,8 +24,10 @@ stages:
     - data/processed/test_winequality.csv 
     - src/train_and_evaluate.py
     params:
-    - estimators.ElasticNet.params.alpha
-    - estimators.ElasticNet.params.l1_ratio
+    # - estimators.ElasticNet.params.alpha
+    # - estimators.ElasticNet.params.l1_ratio
+    - estimators.RandomForestRegressor.params.n_estimators
+    - estimators.RandomForestRegressor.params.max_depth
     # metrics:
     # - reports/scores.json:
     #     cache: false
@@ -33,11 +35,6 @@ stages:
     #     cache: false
     # outs:
     # - saved_models/model.joblib
-
-  log_production_model:
-    cmd: python src/log_production_model.py --config=params.yaml
-    deps: 
-    - src/log_production_model.py
 
   explainableai:
     cmd: python src/explainableai.py
@@ -50,3 +47,8 @@ stages:
     - reports/local/lime
     - reports/local/shap
     - reports/reports.html
+
+  log_production_model:
+    cmd: python src/log_production_model.py --config=params.yaml
+    deps: 
+    - src/log_production_model.py

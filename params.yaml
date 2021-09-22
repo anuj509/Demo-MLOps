@@ -19,7 +19,7 @@ split_data:
   test_x_path: data/processed/test_winequality-x.csv
   test_y_path: data/processed/test_winequality-y.csv
 
-  test_size: 0.2
+  test_size: 0.25
 
 # estimators:
 #   ElasticNet:
@@ -53,6 +53,6 @@ mlflow_config:
   artifacts_dir: artifacts
   experiment_name: Regression
   run_name: mlops
-  registered_model_name: ElasticNetWineModel
+  registered_model_name: RandomForestRegressor
   #remote_server_uri: http://0.0.0.0:1234
   remote_server_uri: http://127.0.0.1:1234
