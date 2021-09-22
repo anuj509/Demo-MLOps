@@ -12,17 +12,35 @@ load_data:
 split_data:
   train_path: data/processed/train_winequality.csv
   test_path: data/processed/test_winequality.csv
+  predictors_path: data/processed/winequality-x.csv
+  taget_path: data/processed/winequality-y.csv
+  train_x_path: data/processed/train_winequality-x.csv
+  train_y_path: data/processed/train_winequality-y.csv
+  test_x_path: data/processed/test_winequality-x.csv
+  test_y_path: data/processed/test_winequality-y.csv
+
   test_size: 0.2
 
+# estimators:
+#   ElasticNet:
+#     params:
+#       alpha: 0.88
+#       l1_ratio: 0.89
+#       # alpha: 0.9
+#       # l1_ratio: 0.4
+#       # alpha: 0.95
+#       # l1_ratio: 0.47
+# model_dir: saved_models
+
 estimators:
-  ElasticNet:
+  RandomForestRegressor:
     params:
-      alpha: 0.88
-      l1_ratio: 0.89
-      # alpha: 0.9
-      # l1_ratio: 0.4
-      # alpha: 0.95
-      # l1_ratio: 0.47
+      n_estimators: 150
+      max_depth: None
+#       # alpha: 0.9
+#       # l1_ratio: 0.4
+#       # alpha: 0.95
+#       # l1_ratio: 0.47
 model_dir: saved_models
 
 reports:

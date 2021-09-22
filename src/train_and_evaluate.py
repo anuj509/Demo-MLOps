@@ -10,12 +10,14 @@ import numpy as np
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import ElasticNet
+from sklearn.ensemble import RandomForestRegressor
 from get_data import read_params
 import argparse
 import joblib
 import json
 from urllib.parse import urlparse
 import mlflow
+import pickle
 
 def eval_metrics(actual, pred):
     rmse = np.sqrt(mean_squared_error(actual, pred))
@@ -32,8 +34,11 @@ def train_and_evaluate(config_path):
     random_state = config["base"]["random_state"]
     model_dir = config["model_dir"]
 
-    alpha = config["estimators"]["ElasticNet"]["params"]["alpha"]
-    l1_ratio = config["estimators"]["ElasticNet"]["params"]["l1_ratio"]
+    # alpha = config["estimators"]["ElasticNet"]["params"]["alpha"]
+    # l1_ratio = config["estimators"]["ElasticNet"]["params"]["l1_ratio"]
+
+    n_estimators = config["estimators"]["RandomForestRegressor"]["params"]["n_estimators"]
+    max_depth = config["estimators"]["RandomForestRegressor"]["params"]["max_depth"]
 
     target = [config["base"]["target_col"]]
 
@@ -55,18 +60,28 @@ def train_and_evaluate(config_path):
 
     with mlflow.start_run(run_name=run_name) as mlops_run:
 
-        lr = ElasticNet(
-            alpha=alpha, 
-            l1_ratio=l1_ratio, 
-            random_state=random_state)
-        lr.fit(train_x, train_y)
+        # lr = ElasticNet(
+        #     alpha=alpha, 
+        #     l1_ratio=l1_ratio, 
+        #     random_state=random_state)
+        # lr.fit(train_x, train_y)
 
-        predicted_qualities = lr.predict(test_x)
+        rf = RandomForestRegressor(
+            random_state=random_state)
+        rf.fit(train_x, train_y)
+
+        pickle.dump(rf, open("prediction_service\model\model.pkl",'wb'))
+        #pickle.dump(lr, open("prediction_service\model\model.pkl",'wb'))
+
+        predicted_qualities = rf.predict(test_x)
 
         (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
 
-        mlflow.log_param("alpha", alpha)
-        mlflow.log_param("l1_ratio", l1_ratio)
+        # mlflow.log_param("alpha", alpha)
+        # mlflow.log_param("l1_ratio", l1_ratio)
+
+        mlflow.log_param("n_estimators", n_estimators)
+        mlflow.log_param("max_depth", max_depth)
 
         mlflow.log_metric("rmse", rmse)
         mlflow.log_metric("mae", mae)
@@ -107,11 +122,11 @@ def train_and_evaluate(config_path):
 
         if tracking_url_type_store != "file":
             mlflow.sklearn.log_model(
-                lr, 
+                rf, 
                 "model", 
                 registered_model_name=mlflow_config["registered_model_name"])
         else:
-            mlflow.sklearn.load_model(lr, "model")
+            mlflow.sklearn.load_model(rf, "model")
 
 
 if __name__ == "__main__":

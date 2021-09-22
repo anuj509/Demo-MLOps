@@ -23,8 +23,8 @@ stages:
       md5: d98e8f2eca228c11c4de1cc96866a54d
       size: 93598
     - path: src/split_data.py
-      md5: b86c3252dee440d0ea3af5dd81143d15
-      size: 1099
+      md5: e307740d10ed9bbfa1ed3c7c5cb24539
+      size: 2226
     outs:
     - path: data/processed/test_winequality.csv
       md5: 6f7c5d87f31a7241324c926968349036
@@ -42,8 +42,8 @@ stages:
       md5: bdcf3dd136facc6dba00de7903396e95
       size: 74889
     - path: src/train_and_evaluate.py
-      md5: ab64e238f5f1832a679717237c7563ea
-      size: 3934
+      md5: a349c0eff4c2909755c8c615642e6739
+      size: 4078
     params:
       params.yaml:
         estimators.ElasticNet.params.alpha: 0.88
