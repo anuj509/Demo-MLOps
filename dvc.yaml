@@ -36,17 +36,17 @@ stages:
     # outs:
     # - saved_models/model.joblib
 
-  explainableai:
-    cmd: python src/explainableai.py
-    deps:
-    - xparams.yaml
-    outs:
-    - reports/global/eli5
-    - reports/global/pdp
-    - reports/global/shap
-    - reports/local/lime
-    - reports/local/shap
-    - reports/reports.html
+  # explainableai:
+  #   cmd: python src/explainableai.py
+  #   deps:
+  #   - xparams.yaml
+    # outs:
+    # - reports/global/eli5
+    # - reports/global/pdp
+    # - reports/global/shap
+    # - reports/local/lime
+    # - reports/local/shap
+    # - reports/reports.html
 
   log_production_model:
     cmd: python src/log_production_model.py --config=params.yaml
