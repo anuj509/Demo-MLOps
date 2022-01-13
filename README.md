@@ -11,5 +11,5 @@ mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./
 conda create --name mlops_on_prem python==3.7
 conda activate mlops_on_prem
 pip install -r requirements.txt 
-pip install mlflow
+pip install mlflow . ...
 
