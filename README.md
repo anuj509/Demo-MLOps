@@ -11,5 +11,10 @@ mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./
 conda create --name mlops_on_prem python==3.7
 conda activate mlops_on_prem
 pip install -r requirements.txt 
+<<<<<<< HEAD
 pip install mlflow
 Install dvc from this link : https://dvc.org/
+=======
+pip install mlflow . ...
+
+>>>>>>> 8810e67e259757109d644df9a5b3d48c9fd1c9a9
