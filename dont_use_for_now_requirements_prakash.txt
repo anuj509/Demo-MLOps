@@ -4,8 +4,8 @@ aiohttp==3.8.1
 aiohttp-retry==2.4.6
 aiosignal==1.2.0
 alembic==1.4.1
-anaconda-client==1.7.2
-anaconda-navigator==1.9.7
+#anaconda-client==1.7.2
+#anaconda-navigator==1.9.7
 anyio==3.4.0
 appdirs==1.4.4
 asgiref==3.4.0
@@ -36,13 +36,13 @@ chardet==3.0.4
 charset-normalizer==2.0.10
 click==8.0.3
 cloudpickle==2.0.0
-clyent==1.2.2
+#clyent==1.2.2
 colorama==0.4.3
 commonmark==0.9.1
-conda==4.8.3
-conda-build==3.18.9
-conda-package-handling==1.6.0
-conda-verify==3.4.2
+#conda==4.8.3
+#conda-build==3.18.9
+#conda-package-handling==1.6.0
+#conda-verify==3.4.2
 configobj==5.0.6
 cryptography==2.8
 cycler==0.11.0
@@ -220,8 +220,8 @@ python-slugify==5.0.2
 python2==1.2
 pytz==2021.1
 PyWavelets==1.2.0
-pywin32==227
-pywinpty==0.5.7
+#pywin32==227
+#pywinpty==0.5.7
 PyYAML==5.2
 pyzmq==18.1.0
 QtPy==1.9.0
@@ -256,7 +256,7 @@ sortedcontainers==2.4.0
 soupsieve==2.2.1
 SQLAlchemy==1.4.29
 sqlparse==0.4.1
--e git+https://github.com/anuj509/Demo-MLOps.git@e3b039ae5801cc4545ded42a8168b036512e30aa#egg=src
+#-e git+https://github.com/anuj509/Demo-MLOps.git@e3b039ae5801cc4545ded42a8168b036512e30aa#egg=src
 starlette==0.16.0
 tabulate==0.8.9
 tenacity==8.0.1

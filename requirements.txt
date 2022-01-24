@@ -2,18 +2,18 @@
 -e .
 
 #Third party Package installtion
-dvc
+dvc==2.9.3
 dvc[gdrive]
 sklearn
-pandas
-pytest
-tox
-flake8
-fastapi
-pydantic
-uvicorn
-gunicorn
-python-multipart
+pandas==1.0.5
+pytest==6.2.5
+tox==3.24.5
+flake8==4.0.1
+fastapi==0.70.0
+pydantic==1.8.2
+uvicorn==0.15.0
+gunicorn==20.1.0
+python-multipart==0.0.5
 #uvloop
-httptools
-mlflow
+httptools==0.2.0
+mlflow==1.22.0
