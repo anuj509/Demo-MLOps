@@ -8,53 +8,49 @@ stages:
       size: 91998
     - path: src/get_data.py
       md5: 711c67906af833fd61f2855817ee8fd8
-      size: 676
+      size: 704
     - path: src/load_data.py
       md5: dcf996a87a9a81aa36fd1354855199c3
-      size: 670
+      size: 691
     outs:
     - path: data/raw/winequality.csv
       md5: d98e8f2eca228c11c4de1cc96866a54d
-      size: 91998
+      size: 93598
   split_data:
     cmd: python src/split_data.py --config=params.yaml
     deps:
     - path: data/raw/winequality.csv
       md5: d98e8f2eca228c11c4de1cc96866a54d
-      size: 91998
+      size: 93598
     - path: src/split_data.py
-      md5: b86c3252dee440d0ea3af5dd81143d15
-      size: 1068
+      md5: e5fde2ae77bea6b7ebba59fd30c10ced
+      size: 2227
     outs:
     - path: data/processed/test_winequality.csv
-      md5: 6f7c5d87f31a7241324c926968349036
-      size: 18534
+      md5: 5371e811bd4563950356820e6360b4ab
+      size: 23153
     - path: data/processed/train_winequality.csv
-      md5: bdcf3dd136facc6dba00de7903396e95
-      size: 73609
+      md5: add70d33a0f895de4adc28f5538e6111
+      size: 68990
   train_and_evaluate:
     cmd: python src/train_and_evaluate.py --config=params.yaml
     deps:
     - path: data/processed/test_winequality.csv
-      md5: 6f7c5d87f31a7241324c926968349036
-      size: 18534
+      md5: 5371e811bd4563950356820e6360b4ab
+      size: 23554
     - path: data/processed/train_winequality.csv
-      md5: bdcf3dd136facc6dba00de7903396e95
-      size: 73609
+      md5: add70d33a0f895de4adc28f5538e6111
+      size: 70190
     - path: src/train_and_evaluate.py
-      md5: 9679ba76594c0a3571b3a7b7af4faf05
-      size: 2626
+      md5: d1a08f77a4c1c070b978050edc4fb6dc
+      size: 4572
     params:
       params.yaml:
-        estimators.ElasticNet.params.alpha: 0.9
-        estimators.ElasticNet.params.l1_ratio: 0.4
-    outs:
-    - path: reports/params.json
-      md5: a4aab0167612f21a6085dd05cfafdbf6
-      size: 41
-    - path: reports/scores.json
-      md5: c0635b3e7c45d0a154062edf7b14acda
-      size: 96
-    - path: saved_models/model.joblib
-      md5: 537b9f4f91a6f3f85ab250d26fb59f14
-      size: 722
+        estimators.RandomForestRegressor.params.max_depth: None
+        estimators.RandomForestRegressor.params.n_estimators: 150
+  log_production_model:
+    cmd: python src/log_production_model.py --config=params.yaml
+    deps:
+    - path: src/log_production_model.py
+      md5: 809fec1715ed15d75f7058ddd1c1a62a
+      size: 1811

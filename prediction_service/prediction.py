@@ -4,6 +4,7 @@ import numpy as np
 import json
 import yaml
 import os
+#git commit
 
 params_path = "params.yaml"
 schema_path = os.path.join("prediction_service","schema_in.json")
