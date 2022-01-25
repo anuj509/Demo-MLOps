@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Metadata-Version: 2.1
 Name: src
 Version: 0.0.1
@@ -9,3 +10,16 @@ Platform: UNKNOWN
 
 UNKNOWN
 
+=======
+Metadata-Version: 2.1
+Name: src
+Version: 0.0.1
+Summary: This is winequality package
+Home-page: UNKNOWN
+Author: akshay
+License: MIT
+Platform: UNKNOWN
+
+UNKNOWN
+
+>>>>>>> 2ec1566ff14ab7e78da91082f66058c3809c80ab

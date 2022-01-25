@@ -1,6 +1,10 @@
 # local package install
 -e .
 
+<<<<<<< HEAD
+=======
+#Third party Package installtion
+>>>>>>> 2ec1566ff14ab7e78da91082f66058c3809c80ab
 dvc==2.9.3
 dvc[gdrive]
 sklearn
@@ -16,6 +20,7 @@ python-multipart==0.0.5
 #uvloop
 httptools==0.2.0
 mlflow==1.22.0
+<<<<<<< HEAD
 
 argon2-cffi==21.1.0
 attrs==21.2.0
@@ -114,3 +119,5 @@ wcwidth==0.2.5
 webencodings==0.5.1
 Werkzeug==2.0.1
 wincertstore==0.2
+=======
+>>>>>>> 2ec1566ff14ab7e78da91082f66058c3809c80ab
