@@ -37089,25 +37089,25 @@
 /***/ })
 /******/ ]);
 //# sourceMappingURL=bundle.js.map </script></head><body>
-        <div class="lime top_div" id="top_divNMIK6JXJ1OTWQCL"></div>
+        <div class="lime top_div" id="top_divSNIH1OSWI96WSYM"></div>
         
         <script>
-        var top_div = d3.select('#top_divNMIK6JXJ1OTWQCL').classed('lime top_div', true);
+        var top_div = d3.select('#top_divSNIH1OSWI96WSYM').classed('lime top_div', true);
         
         
                     var pp_div = top_div.append('div')
                                         .classed('lime predicted_value', true);
                     var pp_svg = pp_div.append('svg').style('width', '100%');
-                    var pp = new lime.PredictedValue(pp_svg, 6.96, 4.43, 7.16);
+                    var pp = new lime.PredictedValue(pp_svg, 6.96, 4.27, 7.11);
                     
         var exp_div;
             var exp = new lime.Explanation(["negative", "positive"]);
         
             exp_div = top_div.append('div').classed('lime explanation', true);
-            exp.show([["alcohol > 11.00", 0.7336844947388058], ["volatile_acidity <= 0.40", 0.20114528915296415], ["0.62 < sulphates <= 0.73", 0.19136001965718785], ["22.00 < total_sulfur_dioxide <= 38.00", 0.07481381454692942], ["density <= 1.00", 0.040698540444203776]], 1, exp_div);
+            exp.show([["alcohol > 11.00", 0.7315896230690557], ["volatile_acidity <= 0.40", 0.20262541281972016], ["0.62 < sulphates <= 0.73", 0.16885988610955818], ["22.00 < total_sulfur_dioxide <= 38.00", 0.05622150799276178], ["density <= 1.00", 0.038210960530359606]], 1, exp_div);
             
         var raw_div = top_div.append('div');
-            exp.show_raw_tabular([["alcohol", "11.20", 0.7336844947388058], ["volatile_acidity", "0.19", 0.20114528915296415], ["sulphates", "0.69", 0.19136001965718785], ["total_sulfur_dioxide", "30.00", 0.07481381454692942], ["density", "0.99", 0.040698540444203776]], 1, raw_div);
+            exp.show_raw_tabular([["alcohol", "11.20", 0.7315896230690557], ["volatile_acidity", "0.19", 0.20262541281972016], ["sulphates", "0.69", 0.16885988610955818], ["total_sulfur_dioxide", "30.00", 0.05622150799276178], ["density", "0.99", 0.038210960530359606]], 1, raw_div);
         
         </script>
         </body></html>
