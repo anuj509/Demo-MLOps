@@ -8,14 +8,14 @@ stages:
       size: 91998
     - path: src/get_data.py
       md5: 711c67906af833fd61f2855817ee8fd8
-      size: 676
+      size: 704
     - path: src/load_data.py
       md5: dcf996a87a9a81aa36fd1354855199c3
-      size: 670
+      size: 691
     outs:
     - path: data/raw/winequality.csv
-      md5: dcb9f7736a81b73cf4cf803b5ef3f07e
-      size: 102550
+      md5: d98e8f2eca228c11c4de1cc96866a54d
+      size: 93598
   split_data:
     cmd: python src/split_data.py --config=params.yaml
     deps:
